@@ -1,31 +1,31 @@
 # Projeto 8: Gerenciamento de Pedidos
-pedidos = []
+lista_pedidos = []
 
-def novo():
-    cliente = input("Cliente: ")
-    valor = float(input("Valor: "))
-    pedidos.append({"cliente": cliente, "valor": valor, "pago": False})
+def cadastrar_pedido():
+    nome_cliente = input("Cliente: ")
+    valor_pedido = float(input("Valor: "))
+    lista_pedidos.append({"cliente": nome_cliente, "valor": valor_pedido, "pago": False})
 
-def listar():
-    for p in pedidos:
-        print(p["cliente"], "-", p["valor"], "-", "Pago" if p["pago"] else "Pendente")
+def listar_pedidos():
+    for pedido in lista_pedidos:
+        print(pedido["cliente"], "-", pedido["valor"], "-", "Pago" if pedido["pago"] else "Pendente")
 
-def pagar():
-    nome = input("Cliente para pagar: ")
-    for p in pedidos:
-        if p["cliente"] == nome and not p["pago"]:
-            p["pago"] = True
+def registrar_pagamento():
+    nome_cliente = input("Cliente para pagar: ")
+    for pedido in lista_pedidos:
+        if pedido["cliente"] == nome_cliente and not pedido["pago"]:
+            pedido["pago"] = True
             print("Pagamento feito")
             return
 
 while True:
     print("1-Novo 2-Listar 3-Pagar 4-Sair")
-    op = input("Opção: ")
-    if op == "1":
-        novo()
-    elif op == "2":
-        listar()
-    elif op == "3":
-        pagar()
-    elif op == "4":
+    opcao = input("Opção: ")
+    if opcao == "1":
+        cadastrar_pedido()
+    elif opcao == "2":
+        listar_pedidos()
+    elif opcao == "3":
+        registrar_pagamento()
+    elif opcao == "4":
         break
